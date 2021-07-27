@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.license       = "MIT"
 
-  gem.add_dependency "azure-storage-blob", "~> 1.1.0"
+  gem.add_dependency "azure-storage-blob", "~> 2.0.0"
   gem.add_dependency "hashie", "~> 3.5"
   gem.add_dependency "addressable", "~> 2.5"
 
