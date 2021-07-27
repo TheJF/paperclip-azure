@@ -57,7 +57,7 @@ module Paperclip
         begin
           require 'azure/storage/blob'
         rescue LoadError => e
-          e.message << " (You may need to install the azure-storage-blob)"
+          e.message << " (You may need to install the azure-storage)"
           raise e
         end unless defined?(::Azure::Core)
 
@@ -145,8 +145,8 @@ module Paperclip
         instances = (Thread.current[:paperclip_azure_instances] ||= {})
         return instances[options] if instance[options]
 
-        service = ::Azure::Storage::Blob::BlobService.new(client: azure_storage_client)
-        service.with_filter ::Azure::Storage::Core::Filter::ExponentialRetryPolicyFilter.new
+        service = azure_storage_client
+        service.with_filter ::Azure::Storage::Common::Core::Filter::ExponentialRetryPolicyFilter.new
 
         instances[options] = service
       end
